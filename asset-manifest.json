@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/unstop-frontend/static/css/main.c1c89199.css",
+    "main.js": "/unstop-frontend/static/js/main.040981e4.js",
+    "static/media/candidate_source.svg": "/unstop-frontend/static/media/candidate_source.6fd0f59a59b2c398c02256f3af617af4.svg",
+    "static/media/candidate.svg": "/unstop-frontend/static/media/candidate.724833311407cea165f12d3b261006ff.svg",
+    "static/media/quiz.svg": "/unstop-frontend/static/media/quiz.144d5727871f6be7dfec5b0438d5b039.svg",
+    "static/media/admin_meds.svg": "/unstop-frontend/static/media/admin_meds.ef956fc96e9309d354aa5a1bc3fee78c.svg",
+    "static/media/note_alt.svg": "/unstop-frontend/static/media/note_alt.a85d741c24c011e3062058074c5d8255.svg",
+    "static/media/calendar.svg": "/unstop-frontend/static/media/calendar.ee8290add4792b8993013ec421610fa3.svg",
+    "static/media/assessment.svg": "/unstop-frontend/static/media/assessment.e6558e2765b959b523012ff8c6bb37fb.svg",
+    "static/media/total_purpose.svg": "/unstop-frontend/static/media/total_purpose.97a222d4f35441928f83f94eacf6cf87.svg",
+    "static/media/share.svg": "/unstop-frontend/static/media/share.e831926a0c36c8023895f376eee52dd0.svg",
+    "static/media/view_agenda.svg": "/unstop-frontend/static/media/view_agenda.99af335c98635ea4bd41e6a834d94794.svg",
+    "static/media/three_dots.svg": "/unstop-frontend/static/media/three_dots.7a42c8ca538dfd4e6a893697b9b9c105.svg",
+    "static/media/dashboard.svg": "/unstop-frontend/static/media/dashboard.5c4dff3e3f5668de2fee8befeb0ae0cd.svg",
+    "static/media/close.svg": "/unstop-frontend/static/media/close.fcf2cc325c631b952b426a53be1464fb.svg",
+    "index.html": "/unstop-frontend/index.html",
+    "static/media/add.svg": "/unstop-frontend/static/media/add.d452445f17164349139eac71d2f2f2f6.svg",
+    "static/media/cut.svg": "/unstop-frontend/static/media/cut.1fc492f6dfac5e111c235deccbbc1893.svg",
+    "main.c1c89199.css.map": "/unstop-frontend/static/css/main.c1c89199.css.map",
+    "main.040981e4.js.map": "/unstop-frontend/static/js/main.040981e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1c89199.css",
+    "static/js/main.040981e4.js"
+  ]
+}
