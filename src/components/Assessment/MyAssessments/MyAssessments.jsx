@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import styles from "./MyAssessments.module.css";
 import totalAssessment from "../../../assets/view_agenda.svg";
 import candidate from "../../../assets/candidate.svg";
@@ -10,8 +10,45 @@ import threeDots from "../../../assets/three_dots.svg";
 import calendar from "../../../assets/calendar.svg";
 import share from "../../../assets/share.svg";
 import { addCommasToNumber, getInitials } from "../../../helper";
+import AddAssignmentModal from "../../AddAssignmentModal/AddAssignmentModal";
 
-const AssessmentsOverview = () => {
+const assessmentDataINI = [
+  {
+    title: "Maths Assessment",
+    users: [{ name: "Utsav Soni", bg: "#6548ee" }],
+    date: "20 Apr 2023",
+    type: "Job",
+    duration: "01:30",
+    questions: 3,
+  },
+  {
+    title: "Physics Assessment",
+    users: [
+      { name: "Utsav Soni", bg: "#6548ee" },
+      { name: "Aman Pratap", bg: "#3079E1" },
+      { name: "Shiva Singh", bg: "#E9407A" },
+    ],
+    date: "2 Jan 2024",
+    type: "Job",
+    duration: "02:00",
+    questions: 5,
+  },
+  {
+    title: "Coding Assessment",
+    users: [
+      { name: "Sagar Thakur", bg: "#E9407A" },
+      { name: "Utsav Soni", bg: "#6548ee" },
+      { name: "Aman Pratap", bg: "#3079E1" },
+      { name: "Shiva Singh", bg: "#E9407A" },
+    ],
+    date: "2 Jan 2024",
+    type: "Job",
+    duration: "02:00",
+    questions: 2,
+  },
+];
+
+const AssessmentsOverview = ({assessmentData}) => {
   const overviewOptions = useMemo(
     () => [
       {
@@ -20,7 +57,7 @@ const AssessmentsOverview = () => {
         bgColor: "#EBE8FD",
         options: [
           {
-            value: 41,
+            value: assessmentData.length,
             diff: null,
             subText: "",
           },
@@ -109,7 +146,7 @@ const AssessmentsOverview = () => {
                         <div className={styles.metric}>
                           <div className={styles.metricTop}>
                             <div className={styles.value}>
-                              {addCommasToNumber(elem.value)}
+                              {addCommasToNumber(elem?.value)}
                             </div>
                             {elem.diff && (
                               <div className={styles.diff}>+{elem.diff}</div>
@@ -133,37 +170,15 @@ const AssessmentsOverview = () => {
   );
 };
 
-const MyAssessmentsDetails = () => {
-  const assessmentCards = useMemo(
-    () => [
-      {
-        title: "Maths Assessment",
-        users: [{ name: "Utsav Soni", bg: "#6548ee" }],
-        date: "20 Apr 2023",
-        type: "Job",
-        duration: "01:30",
-        questions: 3,
-      },
-      {
-        title: "Physics Assessment",
-        users: [
-          { name: "Utsav Soni", bg: "#6548ee" },
-          { name: "Aman Pratap", bg: "#3079E1" },
-          { name: "Shiva Singh", bg: "#E9407A" },
-        ],
-        date: "2 Jan 2024",
-        type: "Job",
-        duration: "02:00",
-        questions: 5,
-      },
-    ],
-    []
-  );
+const MyAssessmentsDetails = ({ setOpenAddModal, assessmentData }) => {
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.title}>My Assessment</div>
       <div className={styles.assessmentCardsContainer}>
-        <div className={styles.newAssessmentCard}>
+        <div
+          onClick={() => setOpenAddModal(true)}
+          className={styles.newAssessmentCard}
+        >
           <div className={styles.addBtn}>
             <img src={add} alt="" />
           </div>
@@ -173,7 +188,7 @@ const MyAssessmentsDetails = () => {
             subjective (text or paragraph)!
           </div>
         </div>
-        {assessmentCards.map((e) => {
+        {assessmentData.map((e) => {
           return (
             <div className={styles.assessmentCard}>
               <div className={styles.assessmentCardTop}>
@@ -239,10 +254,26 @@ const MyAssessmentsDetails = () => {
 };
 
 const MyAssessments = () => {
+  const [openAddModal, setOpenAddModal] = useState(false);
+  const [assessmentData, setAssessmentData] = useState(assessmentDataINI);
+  useEffect(() => {
+    const assessmentData = localStorage.getItem("assessmentData");
+    if (assessmentData) {
+      setAssessmentData(JSON.parse(assessmentData));
+      console.log(JSON.parse(assessmentData));
+    }
+  }, []);
   return (
     <div className={styles.container}>
-      <AssessmentsOverview />
-      <MyAssessmentsDetails />
+      <AddAssignmentModal
+        openAddModal={openAddModal}
+        setOpenAddModal={setOpenAddModal}
+      />
+      <AssessmentsOverview assessmentData={assessmentData} />
+      <MyAssessmentsDetails
+        setOpenAddModal={setOpenAddModal}
+        assessmentData={assessmentData}
+      />
     </div>
   );
 };
