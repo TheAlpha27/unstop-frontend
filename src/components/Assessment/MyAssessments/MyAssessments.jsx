@@ -112,7 +112,7 @@ const AssessmentsOverview = ({ assessmentData }) => {
         ],
       },
     ],
-    []
+    [assessmentData?.length]
   );
   return (
     <div className={styles.overviewContainer}>
