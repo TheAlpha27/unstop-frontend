@@ -5,8 +5,7 @@
   height: 100%;
   gap: 10px;
 }
-.item,
-.activeItem {
+.item{
   /* border: 2px solid green; */
   width: 90px;
   height: 70px;
@@ -21,9 +20,7 @@
   text-align: center;
   text-wrap: nowrap;
   color: #1c4980;
-  font-family: Inter;
   font-size: 12px;
-  font-weight: 500;
   cursor: pointer;
 }
 .activeItem {
@@ -57,7 +54,5 @@
   border: 1px solid #d63500;
   background: #fbebea;
   color: #d63500;
-  font-family: Inter;
   font-size: 10px;
-  font-weight: 500;
 }

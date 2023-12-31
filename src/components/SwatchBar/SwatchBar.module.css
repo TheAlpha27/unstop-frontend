@@ -1,0 +1,20 @@
+.container {
+  /* border: 2px solid green; */
+  height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.items {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1c4980;
+  cursor: pointer;
+}
+.activeItem {
+  color: #0073e6;
+  border-bottom: 3px solid #0073e6;
+}

@@ -1,52 +1,51 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import styles from "./Sidebar.module.css";
 import dashboard from "../../assets/dashboard.svg";
 import note from "../../assets/note_alt.svg";
 import quiz from "../../assets/quiz.svg";
 import admin_meds from "../../assets/admin_meds.svg";
 import Item from "./Item";
-const Sidebar = () => {
-  const [activeState, setActiveState] = useState("Assessment");
+const Sidebar = ({ activeState, setActiveState }) => {
   const items = useMemo(
     () => [
       {
         name: "Dashboard",
         icon: dashboard,
         onClick: () => {
-          setActiveState("Dashboard");
+          setActiveState(1);
         },
         admin: false,
-        active: activeState === "Dashboard",
+        active: activeState === 1,
       },
       {
         name: "Assessment",
         icon: note,
         onClick: () => {
-          setActiveState("Assessment");
+          setActiveState(2);
         },
         admin: false,
-        active: activeState === "Assessment",
+        active: activeState === 2,
       },
       {
         name: "My Library",
         icon: quiz,
         onClick: () => {
-          setActiveState("My Library");
+          setActiveState(3);
         },
         admin: false,
-        active: activeState === "My Library",
+        active: activeState === 3,
       },
       {
         name: "Round Status",
         icon: admin_meds,
         onClick: () => {
-          setActiveState("Round Status");
+          setActiveState(4);
         },
         admin: true,
-        active: activeState === "Round Status",
+        active: activeState === 4,
       },
     ],
-    [activeState]
+    [activeState, setActiveState]
   );
   return (
     <div className={styles.container}>

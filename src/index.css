@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pointer {
+  cursor: pointer;
+}
