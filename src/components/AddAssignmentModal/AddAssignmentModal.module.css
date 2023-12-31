@@ -7,15 +7,70 @@
   left: 0;
   z-index: 100;
   display: flex;
-  align-items: center;
   justify-content: center;
+  overflow: hidden;
+  animation-name: fade;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
 }
+@keyframes fade {
+  from {
+    background: rgba(0, 0, 0, 0);
+  }
+  to {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+.endFade {
+  animation-name: fadeOut;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+@keyframes fadeOut {
+  from {
+    background: rgba(0, 0, 0, 0.5);
+  }
+  to {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
 .modal {
   background: #fff;
   border-radius: 8px;
   border: 1px solid #dadce0;
   width: 591px;
+  animation-name: rise;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
+@keyframes rise {
+  from {
+    transform: translate(0, 100%);
+  }
+  to {
+    transform: translate(0, -50%);
+  }
+}
+
+.endDown {
+  animation-name: endDown;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes endDown {
+  from {
+    transform: translate(0, -50%);
+  }
+  to {
+    transform: translate(0, 100%);
+  }
+}
+
 .modalTop {
   display: flex;
   justify-content: space-between;
@@ -87,6 +142,6 @@
   font-weight: 600;
   cursor: pointer;
 }
-.error{
-    border: 2px solid red;
+.error {
+  border: 2px solid red;
 }

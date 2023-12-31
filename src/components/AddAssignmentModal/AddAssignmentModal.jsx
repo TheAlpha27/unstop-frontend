@@ -16,6 +16,7 @@ const AddAssignmentModal = ({
     type: false,
     duration: false,
   });
+  const [endAnimation, setEndAnimation] = useState(false);
 
   const [assessment, setAssessment] = useState({
     title: "",
@@ -34,55 +35,63 @@ const AddAssignmentModal = ({
   });
 
   const closeModal = () => {
-    setAssessment({
-      title: "",
-      type: "",
-      desc: "",
-      skils: [],
-      duration: "",
-      questions: 3,
-      users: [
-        { name: "Sagar Thakur", bg: "#E9407A" },
-        { name: "Utsav Soni", bg: "#6548ee" },
-        { name: "Aman Pratap", bg: "#3079E1" },
-        { name: "Shiva Singh", bg: "#E9407A" },
-      ],
-      date: "",
-    });
-    setErrors({
-      title: false,
-      type: false,
-      duration: false,
-      date: false,
-    });
-    setOpenAddModal(false);
+    setEndAnimation(true);
+    setTimeout(() => {
+      setAssessment({
+        title: "",
+        type: "",
+        desc: "",
+        skils: [],
+        duration: "",
+        questions: 3,
+        users: [
+          { name: "Sagar Thakur", bg: "#E9407A" },
+          { name: "Utsav Soni", bg: "#6548ee" },
+          { name: "Aman Pratap", bg: "#3079E1" },
+          { name: "Shiva Singh", bg: "#E9407A" },
+        ],
+        date: "",
+      });
+      setErrors({
+        title: false,
+        type: false,
+        duration: false,
+        date: false,
+      });
+      setOpenAddModal(false);
+      setEndAnimation(false);
+    }, 500);
   };
 
   useEffect(() => {
     const handleClick = (e) => {
       if (e.target === ref1.current) {
-        setAssessment({
-          title: "",
-          type: "",
-          desc: "",
-          skils: [],
-          duration: "",
-          questions: 3,
-          users: [
-            { name: "Sagar Thakur", bg: "#E9407A" },
-            { name: "Utsav Soni", bg: "#6548ee" },
-            { name: "Aman Pratap", bg: "#3079E1" },
-            { name: "Shiva Singh", bg: "#E9407A" },
-          ],
-          date: "",
-        });
-        setErrors({
-          title: false,
-          type: false,
-          duration: false,
-          date: false,
-        });
-        setOpenAddModal(false);
+        setEndAnimation(true);
+        setTimeout(() => {
+          setAssessment({
+            title: "",
+            type: "",
+            desc: "",
+            skils: [],
+            duration: "",
+            questions: 3,
+            users: [
+              { name: "Sagar Thakur", bg: "#E9407A" },
+              { name: "Utsav Soni", bg: "#6548ee" },
+              { name: "Aman Pratap", bg: "#3079E1" },
+              { name: "Shiva Singh", bg: "#E9407A" },
+            ],
+            date: "",
+          });
+          setErrors({
+            title: false,
+            type: false,
+            duration: false,
+            date: false,
+          });
+          setOpenAddModal(false);
+          setEndAnimation(false);
+        }, 450);
       }
     };
     document.body.addEventListener("click", handleClick);
@@ -138,8 +147,14 @@ const AddAssignmentModal = ({
     return <></>;
   }
   return (
-    <div ref={ref1} className={styles.container}>
-      <div ref={ref2} className={styles.modal}>
+    <div
+      ref={ref1}
+      className={`${styles.container} ${endAnimation ? styles.endFade : ""}`}
+    >
+      <div
+        ref={ref2}
+        className={`${styles.modal} ${endAnimation ? styles.endDown : ""}`}
+      >
         <div className={styles.modalTop}>
           <div className={styles.modalTitle}>Create new assessment</div>
           <img onClick={closeModal} src={cut} alt="" className="pointer" />
