@@ -6,6 +6,21 @@
   font-style: normal;
   font-weight: 500;
 }
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #bababa;
+  border-radius: 12px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9d9d9d;
+}
+
 .center {
   display: flex;
   align-items: center;
