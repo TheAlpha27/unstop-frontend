@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.overviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.title {
+  color: #1c4980;
+  font-size: 18px;
+  font-weight: 500;
+}
+.overviewCards {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 12px;
+  border: 1px solid #dadce0;
+  padding-right: 30px;
+}
+.card {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cardTitle {
+  color: #1c4980;
+  font-size: 14px;
+  font-weight: 600;
+}
+.cardBody {
+  display: flex;
+  gap: 10px;
+}
+.iconFrame {
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+.iconImg {
+  width: 20px;
+  height: 20px;
+}
+.metricContainer {
+  color: #1c4980;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.metricTop {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.value {
+  color: #1c4980;
+  font-size: 20px;
+  font-weight: 700;
+}
+.diff {
+  color: #05c165;
+  font-size: 12px;
+  font-weight: 500;
+}
+.subText {
+  color: #1c4980;
+  font-size: 12px;
+  font-weight: 500;
+}
+.horizontalDivider {
+  height: 40px;
+  border: 1px solid #dadce0;
+}

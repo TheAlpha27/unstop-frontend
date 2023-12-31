@@ -1,6 +1,8 @@
 import React, { useMemo, useState } from "react";
 import styles from "./Assessment.module.css";
 import SwatchBar from "../SwatchBar/SwatchBar";
+import MyAssessments from "./MyAssessments/MyAssessments";
+import Dummy from "./Dummy/Dummy";
 
 const Assessment = () => {
   const [activeSwatch, setActiveSwatch] = useState(1); //1: My Assessments, 2: Dummy Section
@@ -30,7 +32,10 @@ const Assessment = () => {
           setActiveSwatch={setActiveSwatch}
         />
       </div>
-      <div className={styles.bottom}></div>
+      <div className={styles.bottom}>
+        {activeSwatch === 1 && <MyAssessments />}
+        {activeSwatch === 2 && <Dummy />}
+      </div>
     </>
   );
 };

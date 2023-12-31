@@ -1,7 +1,7 @@
 .top {
   /* border: 2px solid green; */
   padding: 0px 20px;
-  border-bottom: 2px solid #dadce0;
+  border-bottom: 1px solid #dadce0;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -16,5 +16,5 @@
   border: 1px solid #dadce0;
 }
 .bottom {
-  padding: 0px 20px;
+  padding: 20px 20px;
 }
