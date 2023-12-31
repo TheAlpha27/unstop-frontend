@@ -14,20 +14,79 @@
   background: #fff;
   border-radius: 8px;
   border: 1px solid #dadce0;
+  width: 591px;
 }
 .modalTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  padding: 15px;
   color: #1c4980;
   font-size: 20px;
   font-weight: 600;
   border-bottom: 1px solid #dadce0;
 }
-.close {
+.mid {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.input {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.label {
+  color: #1c4980;
+  font-size: 16px;
+  font-weight: 500;
+}
+.txtInp,
+.select,
+.skills {
+  width: 100%;
+  outline: none;
+  color: #1c4980;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #dadce0;
+  background: #fff;
+}
+.skills {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  display: flex;
+  gap: 10px;
+}
+.skillCell {
+  border-radius: 22px;
+  background: #ddedff;
+  padding: 6px 8px 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2px;
+  font-size: 12px;
+}
+.bottom {
+  padding: 20px 30px;
+}
+.save {
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  background: #0073e6;
+  padding: 10px 30px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
 }
-.mid{
-    padding: 30px 20px;
+.error{
+    border: 2px solid red;
 }

@@ -48,7 +48,7 @@ const assessmentDataINI = [
   },
 ];
 
-const AssessmentsOverview = ({assessmentData}) => {
+const AssessmentsOverview = ({ assessmentData }) => {
   const overviewOptions = useMemo(
     () => [
       {
@@ -57,7 +57,7 @@ const AssessmentsOverview = ({assessmentData}) => {
         bgColor: "#EBE8FD",
         options: [
           {
-            value: assessmentData.length,
+            value: assessmentData?.length,
             diff: null,
             subText: "",
           },
@@ -127,7 +127,9 @@ const AssessmentsOverview = ({assessmentData}) => {
                 flexGrow: `${e.options.length}`,
               }}
             >
-              <div className={styles.cardTitle}>{e.name}</div>
+              <div className={styles.cardTitle} style={{ textWrap: "nowrap" }}>
+                {e.name}
+              </div>
               <div className={styles.cardBody}>
                 {idx === 0 ? (
                   <div
@@ -152,7 +154,12 @@ const AssessmentsOverview = ({assessmentData}) => {
                               <div className={styles.diff}>+{elem.diff}</div>
                             )}
                           </div>
-                          <div className={styles.subText}>{elem.subText}</div>
+                          <div
+                            className={styles.subText}
+                            style={{ textWrap: "nowrap" }}
+                          >
+                            {elem.subText}
+                          </div>
                         </div>
                         {ind < e.options.length - 1 && (
                           <div className={styles.horizontalDivider}></div>
@@ -170,7 +177,97 @@ const AssessmentsOverview = ({assessmentData}) => {
   );
 };
 
-const MyAssessmentsDetails = ({ setOpenAddModal, assessmentData }) => {
+const AssessmentCard = ({ data, handleDelete }) => {
+  const [showDelete, setShowDelete] = useState(false);
+  return (
+    <div className={styles.assessmentCard}>
+      <div className={styles.assessmentCardTop}>
+        <img src={assessment} alt="" />
+        <img
+          onClick={() => {
+            setShowDelete(!showDelete);
+          }}
+          className={styles.threeDots}
+          src={threeDots}
+          alt=""
+        />
+        {showDelete && (
+          <div
+            className={styles.delete}
+            onClick={() => {
+              handleDelete(data);
+              setShowDelete(false);
+            }}
+          >
+            Delete
+          </div>
+        )}
+      </div>
+      <div className={styles.assessmentCardMid}>
+        <div className={styles.title}>{data.title}</div>
+        <div className={styles.dateDetails}>
+          <div className={styles.cardTitle}>{data.type}</div>
+          <div className={styles.smDivider}></div>
+          <div className={styles.date}>
+            <img src={calendar} alt="" />
+            <div>{data.date}</div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.dashDivider}></div>
+      <div className={styles.assessmentCardBottom}>
+        <div className={styles.bottomLeft}>
+          <div>
+            <div className={styles.cardTitle}>{data.duration}</div>
+            <div className={styles.subText}>Duration</div>
+          </div>
+          <div>
+            <div className={styles.cardTitle}>{data.questions}</div>
+            <div className={styles.subText}>Questions</div>
+          </div>
+        </div>
+        <div className={styles.bottomRight}>
+          <div className={styles.shareBtn}>
+            <img src={share} alt="" />
+            <div>Share</div>
+          </div>
+          <div className={styles.userDotsContainer}>
+            {data.users.map((u, i) => {
+              if (i < 3) {
+                return (
+                  <div
+                    className={styles.userDot}
+                    style={{
+                      background: u.bg,
+                      zIndex: `${i + 1}`,
+                      right: `-${i * 10}px`,
+                    }}
+                  >
+                    {getInitials(u.name)}
+                  </div>
+                );
+              } else {
+                return <></>;
+              }
+            })}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MyAssessmentsDetails = ({
+  setOpenAddModal,
+  assessmentData,
+  setAssessmentData,
+}) => {
+  const handleDelete = (data) => {
+    let temp = [...assessmentData];
+    temp = temp.filter((e) => e.title !== data.title);
+    localStorage.setItem("assessmentData", JSON.stringify(temp));
+    setAssessmentData(temp);
+  };
   return (
     <div className={styles.overviewContainer}>
       <div className={styles.title}>My Assessment</div>
@@ -188,65 +285,8 @@ const MyAssessmentsDetails = ({ setOpenAddModal, assessmentData }) => {
             subjective (text or paragraph)!
           </div>
         </div>
-        {assessmentData.map((e) => {
-          return (
-            <div className={styles.assessmentCard}>
-              <div className={styles.assessmentCardTop}>
-                <img src={assessment} alt="" />
-                <img className={styles.threeDots} src={threeDots} alt="" />
-              </div>
-              <div className={styles.assessmentCardMid}>
-                <div className={styles.title}>{e.title}</div>
-                <div className={styles.dateDetails}>
-                  <div className={styles.cardTitle}>{e.type}</div>
-                  <div className={styles.smDivider}></div>
-                  <div className={styles.date}>
-                    <img src={calendar} alt="" />
-                    <div>{e.date}</div>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.dashDivider}></div>
-              <div className={styles.assessmentCardBottom}>
-                <div className={styles.bottomLeft}>
-                  <div>
-                    <div className={styles.cardTitle}>{e.duration}</div>
-                    <div className={styles.subText}>Duration</div>
-                  </div>
-                  <div>
-                    <div className={styles.cardTitle}>{e.questions}</div>
-                    <div className={styles.subText}>Questions</div>
-                  </div>
-                </div>
-                <div className={styles.bottomRight}>
-                  <div className={styles.shareBtn}>
-                    <img src={share} alt="" />
-                    <div>Share</div>
-                  </div>
-                  <div className={styles.userDotsContainer}>
-                    {e.users.map((u, i) => {
-                      if (i < 3) {
-                        return (
-                          <div
-                            className={styles.userDot}
-                            style={{
-                              background: u.bg,
-                              zIndex: `${i + 1}`,
-                              right: `-${i * 10}px`,
-                            }}
-                          >
-                            {getInitials(u.name)}
-                          </div>
-                        );
-                      } else {
-                        return <></>;
-                      }
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
+        {assessmentData?.map((e) => {
+          return <AssessmentCard data={e} handleDelete={handleDelete} />;
         })}
       </div>
     </div>
@@ -255,12 +295,16 @@ const MyAssessmentsDetails = ({ setOpenAddModal, assessmentData }) => {
 
 const MyAssessments = () => {
   const [openAddModal, setOpenAddModal] = useState(false);
-  const [assessmentData, setAssessmentData] = useState(assessmentDataINI);
+  const [assessmentData, setAssessmentData] = useState();
   useEffect(() => {
-    const assessmentData = localStorage.getItem("assessmentData");
-    if (assessmentData) {
-      setAssessmentData(JSON.parse(assessmentData));
-      console.log(JSON.parse(assessmentData));
+    const assessmentDataLocal = localStorage.getItem("assessmentData");
+    if (assessmentDataLocal.length) {
+      let parsedData = JSON.parse(assessmentDataLocal);
+      if (parsedData.length > 0) {
+        setAssessmentData(parsedData);
+      } else {
+        setAssessmentData(assessmentDataINI);
+      }
     }
   }, []);
   return (
@@ -268,11 +312,14 @@ const MyAssessments = () => {
       <AddAssignmentModal
         openAddModal={openAddModal}
         setOpenAddModal={setOpenAddModal}
+        assessmentData={assessmentData}
+        setAssessmentData={setAssessmentData}
       />
       <AssessmentsOverview assessmentData={assessmentData} />
       <MyAssessmentsDetails
         setOpenAddModal={setOpenAddModal}
         assessmentData={assessmentData}
+        setAssessmentData={setAssessmentData}
       />
     </div>
   );

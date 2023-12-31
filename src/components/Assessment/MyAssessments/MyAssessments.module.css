@@ -120,6 +120,22 @@
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
+  position: relative;
+}
+.delete {
+  position: absolute;
+  right: -40px;
+  top: 20px;
+  padding: 5px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid #dadce0;
+  font-size: 12px;
+  color: #1c4980;
+  cursor: pointer;
+}
+.delete:hover{
+    background-color: #f3f3f3;
 }
 .threeDots {
   height: fit-content;
