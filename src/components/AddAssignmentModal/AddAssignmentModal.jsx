@@ -61,14 +61,35 @@ const AddAssignmentModal = ({
   useEffect(() => {
     const handleClick = (e) => {
       if (e.target === ref1.current) {
-        closeModal();
+        setAssessment({
+          title: "",
+          type: "",
+          desc: "",
+          skils: [],
+          duration: "",
+          questions: 3,
+          users: [
+            { name: "Sagar Thakur", bg: "#E9407A" },
+            { name: "Utsav Soni", bg: "#6548ee" },
+            { name: "Aman Pratap", bg: "#3079E1" },
+            { name: "Shiva Singh", bg: "#E9407A" },
+          ],
+          date: "",
+        });
+        setErrors({
+          title: false,
+          type: false,
+          duration: false,
+          date: false,
+        });
+        setOpenAddModal(false);
       }
     };
     document.body.addEventListener("click", handleClick);
     return () => {
       document.body.removeEventListener("click", handleClick);
     };
-  }, []);
+  }, [setOpenAddModal]);
 
   const handleSave = () => {
     let err = false;
