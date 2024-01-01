@@ -280,6 +280,7 @@ const AddAssignmentModal = ({
               className={`${styles.duration} ${
                 errors.duration ? styles.error : ""
               }`}
+              onClick={() => document.getElementById("hour").focus()}
             >
               <input
                 type="text"
