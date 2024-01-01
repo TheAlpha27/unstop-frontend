@@ -365,6 +365,8 @@ const MyAssessments = ({ isMobile }) => {
       } else {
         setAssessmentData(assessmentDataINI);
       }
+    }else {
+      setAssessmentData(assessmentDataINI);
     }
   }, []);
   return (
