@@ -12,6 +12,7 @@ import share from "../../../assets/share.svg";
 import search from "../../../assets/search.svg";
 import barChart from "../../../assets/bar-chart.svg";
 import filter from "../../../assets/filter-list-alt.svg";
+import addWhite from "../../../assets/add_white.svg";
 import { addCommasToNumber, getInitials } from "../../../helper";
 import AddAssignmentModal from "../../AddAssignmentModal/AddAssignmentModal";
 
@@ -368,6 +369,14 @@ const MyAssessments = ({ isMobile }) => {
   }, []);
   return (
     <div className={styles.container}>
+      {isMobile && (
+        <div
+          onClick={() => setOpenAddModal(true)}
+          className={styles.addAssessment}
+        >
+          <img src={addWhite} alt="" />
+        </div>
+      )}
       <AddAssignmentModal
         openAddModal={openAddModal}
         setOpenAddModal={setOpenAddModal}
