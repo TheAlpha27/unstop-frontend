@@ -53,6 +53,7 @@ const SidebarMobile = ({ items, setShowSidebar }) => {
               >
                 <img src={e.icon} alt="" />
                 <div>{e.name}</div>
+                {e.admin && <div className={styles.admin}>Admin</div>}
               </div>
             );
           })}
