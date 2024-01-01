@@ -358,7 +358,7 @@ const MyAssessments = ({ isMobile }) => {
   const [startEndAnimation, setStartEndAnimation] = useState(false);
   useEffect(() => {
     const assessmentDataLocal = localStorage.getItem("assessmentData");
-    if (assessmentDataLocal.length) {
+    if (assessmentDataLocal) {
       let parsedData = JSON.parse(assessmentDataLocal);
       if (parsedData.length > 0) {
         setAssessmentData(parsedData);
