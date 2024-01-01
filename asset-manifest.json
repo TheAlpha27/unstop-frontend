@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/unstop-frontend/static/css/main.c1c89199.css",
-    "main.js": "/unstop-frontend/static/js/main.040981e4.js",
+    "main.css": "/unstop-frontend/static/css/main.8741e8ae.css",
+    "main.js": "/unstop-frontend/static/js/main.37ff9f43.js",
     "static/media/candidate_source.svg": "/unstop-frontend/static/media/candidate_source.6fd0f59a59b2c398c02256f3af617af4.svg",
     "static/media/candidate.svg": "/unstop-frontend/static/media/candidate.724833311407cea165f12d3b261006ff.svg",
     "static/media/quiz.svg": "/unstop-frontend/static/media/quiz.144d5727871f6be7dfec5b0438d5b039.svg",
@@ -11,18 +11,24 @@
     "static/media/assessment.svg": "/unstop-frontend/static/media/assessment.e6558e2765b959b523012ff8c6bb37fb.svg",
     "static/media/total_purpose.svg": "/unstop-frontend/static/media/total_purpose.97a222d4f35441928f83f94eacf6cf87.svg",
     "static/media/share.svg": "/unstop-frontend/static/media/share.e831926a0c36c8023895f376eee52dd0.svg",
+    "static/media/search.svg": "/unstop-frontend/static/media/search.3ba2a5bdc5bba19b50df8585d161f7ed.svg",
     "static/media/view_agenda.svg": "/unstop-frontend/static/media/view_agenda.99af335c98635ea4bd41e6a834d94794.svg",
     "static/media/three_dots.svg": "/unstop-frontend/static/media/three_dots.7a42c8ca538dfd4e6a893697b9b9c105.svg",
     "static/media/dashboard.svg": "/unstop-frontend/static/media/dashboard.5c4dff3e3f5668de2fee8befeb0ae0cd.svg",
+    "static/media/filter-list-alt.svg": "/unstop-frontend/static/media/filter-list-alt.e7d7193e45a6dee0b3f9c22c3dfefa37.svg",
     "static/media/close.svg": "/unstop-frontend/static/media/close.fcf2cc325c631b952b426a53be1464fb.svg",
     "index.html": "/unstop-frontend/index.html",
-    "static/media/add.svg": "/unstop-frontend/static/media/add.d452445f17164349139eac71d2f2f2f6.svg",
+    "static/media/add_white.svg": "/unstop-frontend/static/media/add_white.15604dd578d322e89ba0f9956ed5d05e.svg",
+    "static/media/add.svg": "/unstop-frontend/static/media/add.500187c519209eb7e788db254e1f8040.svg",
+    "static/media/hamburger.svg": "/unstop-frontend/static/media/hamburger.9367b80288fdb7523c9e14f9d0f79b80.svg",
+    "static/media/cutMob.svg": "/unstop-frontend/static/media/cutMob.31f9dbc6414ef1730136f8e4e203e93a.svg",
     "static/media/cut.svg": "/unstop-frontend/static/media/cut.1fc492f6dfac5e111c235deccbbc1893.svg",
-    "main.c1c89199.css.map": "/unstop-frontend/static/css/main.c1c89199.css.map",
-    "main.040981e4.js.map": "/unstop-frontend/static/js/main.040981e4.js.map"
+    "static/media/bar-chart.svg": "/unstop-frontend/static/media/bar-chart.32455e28ec81c48a5f8e4f84821dba51.svg",
+    "main.8741e8ae.css.map": "/unstop-frontend/static/css/main.8741e8ae.css.map",
+    "main.37ff9f43.js.map": "/unstop-frontend/static/js/main.37ff9f43.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1c89199.css",
-    "static/js/main.040981e4.js"
+    "static/css/main.8741e8ae.css",
+    "static/js/main.37ff9f43.js"
   ]
 }
