@@ -100,7 +100,7 @@
 }
 .txtInp,
 .select,
-.skills {
+.skills, .duration {
   width: 100%;
   outline: none;
   color: #1c4980;
@@ -126,6 +126,15 @@
   justify-content: space-between;
   gap: 2px;
   font-size: 12px;
+}
+.duration{
+  display: flex;
+}
+.durationInp{
+  text-align: center;
+  border: none;
+  outline: none;
+  width: 30px;
 }
 .bottom {
   padding: 20px 30px;

@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styles from "./AddAssignmentModal.module.css";
 import cut from "../../assets/cut.svg";
 import close from "../../assets/close.svg";
+import { convertToDoubleDigit } from "../../helper";
 
 const AddAssignmentModal = ({
   openAddModal,
@@ -33,9 +34,18 @@ const AddAssignmentModal = ({
     date: "",
   });
 
+  const [duration, setDuration] = useState({
+    hour: "",
+    min: "",
+  });
+
   const closeModal = () => {
     setEndAnimation(true);
     setTimeout(() => {
+      setDuration({
+        hour: "",
+        min: "",
+      });
       setAssessment({
         title: "",
         type: "",
@@ -55,7 +65,6 @@ const AddAssignmentModal = ({
         title: false,
         type: false,
         duration: false,
-        date: false,
       });
       setOpenAddModal(false);
       setEndAnimation(false);
@@ -67,6 +76,10 @@ const AddAssignmentModal = ({
       if (e.target === ref1.current) {
         setEndAnimation(true);
         setTimeout(() => {
+          setDuration({
+            hour: "",
+            min: "",
+          });
           setAssessment({
             title: "",
             type: "",
@@ -86,7 +99,6 @@ const AddAssignmentModal = ({
             title: false,
             type: false,
             duration: false,
-            date: false,
           });
           setOpenAddModal(false);
           setEndAnimation(false);
@@ -108,20 +120,31 @@ const AddAssignmentModal = ({
     };
     for (const key in assessment) {
       if (errors.hasOwnProperty(key)) {
-        if (!assessment[key]) {
+        if (!assessment[key] && key !== "duration") {
           temp[key] = true;
+          err = true;
+        }
+        if (
+          (Number(duration.min) === 0 || duration.min === "") &&
+          (Number(duration.hour) === 0 || duration.hour === "")
+        ) {
+          temp.duration = true;
           err = true;
         }
       }
     }
+    console.log(temp);
     if (!err) {
-      console.log("no errors");
       setErrors({
         title: false,
         type: false,
         duration: false,
       });
       let temp = { ...assessment };
+      temp.duration =
+        convertToDoubleDigit(Number(duration.hour)) +
+        ":" +
+        convertToDoubleDigit(Number(duration.min));
       const currentDate = new Date();
       const options = { day: "2-digit", month: "short", year: "numeric" };
       const formattedDate = new Intl.DateTimeFormat("en-US", options)
@@ -253,17 +276,55 @@ const AddAssignmentModal = ({
           </div>
           <div className={styles.input}>
             <div className={styles.label}>Duration of assessment*</div>
-            <input
-              type="time"
-              className={`${styles.txtInp} ${
+            <div
+              className={`${styles.duration} ${
                 errors.duration ? styles.error : ""
               }`}
-              placeholder="Type Here"
-              value={assessment.duration}
-              onChange={(e) => {
-                setAssessment({ ...assessment, duration: e.target.value });
-              }}
-            />
+            >
+              <input
+                type="text"
+                placeholder="HH"
+                id="hour"
+                value={duration.hour}
+                className={styles.durationInp}
+                onChange={(e) => {
+                  if (
+                    Number(e.target.value) >= 0 &&
+                    Number(e.target.value) < 24
+                  ) {
+                    if (Number(e.target.value) >= 10) {
+                      setDuration({ ...duration, hour: e.target.value });
+                      document.getElementById("min").focus();
+                    } else {
+                      setDuration({ ...duration, hour: e.target.value });
+                    }
+                  }
+                  if (Number(e.target.value) >= 24) {
+                    setDuration({ ...duration, hour: 23 });
+                    document.getElementById("min").focus();
+                  }
+                }}
+              />
+              <span>:</span>
+              <input
+                type="text"
+                placeholder="MM"
+                id="min"
+                className={styles.durationInp}
+                onChange={(e) => {
+                  if (
+                    Number(e.target.value) >= 0 &&
+                    Number(e.target.value) < 60
+                  ) {
+                    setDuration({ ...duration, min: e.target.value });
+                  }
+                  if (e.target.value === "") {
+                    document.getElementById("hour").focus();
+                  }
+                }}
+                value={duration.min}
+              />
+            </div>
           </div>
         </div>
         <div className={styles.bottom}>

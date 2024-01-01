@@ -8,3 +8,11 @@ export const addCommasToNumber = (number) => {
   const numberWithCommas = numberString?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return numberWithCommas;
 };
+export const convertToDoubleDigit = (number) => {
+  console.log(number);
+  if (number < 10) {
+    return "0" + number;
+  } else {
+    return number.toString();
+  }
+};
