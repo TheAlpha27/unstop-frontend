@@ -17,7 +17,6 @@ const AddAssignmentModal = ({
     duration: false,
   });
   const [endAnimation, setEndAnimation] = useState(false);
-
   const [assessment, setAssessment] = useState({
     title: "",
     type: "",
@@ -60,7 +59,7 @@ const AddAssignmentModal = ({
       });
       setOpenAddModal(false);
       setEndAnimation(false);
-    }, 500);
+    }, 450);
   };
 
   useEffect(() => {
@@ -102,16 +101,21 @@ const AddAssignmentModal = ({
 
   const handleSave = () => {
     let err = false;
+    let temp = {
+      title: false,
+      type: false,
+      duration: false,
+    };
     for (const key in assessment) {
       if (errors.hasOwnProperty(key)) {
         if (!assessment[key]) {
-          let temp = { ...errors };
           temp[key] = true;
           err = true;
         }
       }
     }
     if (!err) {
+      console.log("no errors");
       setErrors({
         title: false,
         type: false,
@@ -140,6 +144,8 @@ const AddAssignmentModal = ({
       setAssessmentData(dataToBeSaved);
       localStorage.setItem("assessmentData", JSON.stringify(dataToBeSaved));
       closeModal();
+    } else {
+      setErrors(temp);
     }
   };
 
@@ -161,7 +167,7 @@ const AddAssignmentModal = ({
         </div>
         <div className={styles.mid}>
           <div className={styles.input}>
-            <div className={styles.label}>Name of assessment</div>
+            <div className={styles.label}>Name of assessment*</div>
             <input
               type="text"
               className={`${styles.txtInp} ${errors.title ? styles.error : ""}`}
@@ -173,7 +179,7 @@ const AddAssignmentModal = ({
             />
           </div>
           <div className={styles.input}>
-            <div className={styles.label}>Purpose of the test is</div>
+            <div className={styles.label}>Purpose of the test is*</div>
             <select
               name="Purpose"
               id="purpose"
@@ -246,7 +252,7 @@ const AddAssignmentModal = ({
             />
           </div>
           <div className={styles.input}>
-            <div className={styles.label}>Duration of assessment</div>
+            <div className={styles.label}>Duration of assessment*</div>
             <input
               type="time"
               className={`${styles.txtInp} ${

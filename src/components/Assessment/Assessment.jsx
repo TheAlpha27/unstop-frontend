@@ -2,10 +2,11 @@ import React, { useMemo, useState } from "react";
 import styles from "./Assessment.module.css";
 import SwatchBar from "../SwatchBar/SwatchBar";
 import MyAssessments from "./MyAssessments/MyAssessments";
-import Dummy from "./Dummy/Dummy";
+import UnstopAssessments from "./UnstopAssessments/UnstopAssessments";
+import hamburger from "../../assets/hamburger.svg";
 
-const Assessment = () => {
-  const [activeSwatch, setActiveSwatch] = useState(1); //1: My Assessments, 2: Dummy Section
+const Assessment = ({ isMobile, setShowSidebar }) => {
+  const [activeSwatch, setActiveSwatch] = useState(1); //1: My Assessments, 2: Unstop Assessments
   const swatches = useMemo(
     () => [
       {
@@ -14,7 +15,7 @@ const Assessment = () => {
         active: activeSwatch === 1,
       },
       {
-        name: "Dummy Swatch",
+        name: "Unstop Assessments",
         onClick: () => setActiveSwatch(2),
         active: activeSwatch === 2,
       },
@@ -24,17 +25,27 @@ const Assessment = () => {
   return (
     <>
       <div className={styles.top}>
-        <span className={styles.title}>Assessment</span>
-        <div className={styles.horizontalDivider}></div>
+        {isMobile ? (
+          <div className={styles.mobileTop}>
+            <img onClick={() => setShowSidebar(true)} src={hamburger} alt="" />
+            Assessment
+          </div>
+        ) : (
+          <>
+            <span className={styles.title}>Assessment</span>
+            <div className={styles.horizontalDivider}></div>
+          </>
+        )}
         <SwatchBar
           swatches={swatches}
           activeSwatch={activeSwatch}
           setActiveSwatch={setActiveSwatch}
+          isMobile={isMobile}
         />
       </div>
       <div className={styles.bottom}>
         {activeSwatch === 1 && <MyAssessments />}
-        {activeSwatch === 2 && <Dummy />}
+        {activeSwatch === 2 && <UnstopAssessments />}
       </div>
     </>
   );

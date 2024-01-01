@@ -19,3 +19,14 @@
   color: #0073e6;
   border-bottom: 3px solid #0073e6;
 }
+@media only screen and (max-width: 760px) {
+  .container{
+    width: 100%;
+    gap: 0px;
+    height: 50px;
+  }
+  .items{
+    flex-grow: 1;
+    justify-content: center;
+  }
+}

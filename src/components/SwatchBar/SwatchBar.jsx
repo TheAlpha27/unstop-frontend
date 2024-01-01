@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./SwatchBar.module.css";
 
-const SwatchBar = ({ activeSwatch, setActiveSwatch, swatches }) => {
+const SwatchBar = ({ activeSwatch, setActiveSwatch, swatches, isMobile }) => {
   return (
     <div className={styles.container}>
       {swatches.map((e) => {

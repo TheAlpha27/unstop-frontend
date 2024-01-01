@@ -145,3 +145,29 @@
 .error {
   border: 2px solid red;
 }
+@media only screen and (max-width: 760px) {
+  .modal {
+    width: 100vw;
+    height: fit-content;
+    top: 100%;
+    transform: translate(0, -100%);
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+  @keyframes rise {
+    from {
+      transform: translate(0, 100%);
+    }
+    to {
+      transform: translate(0, -100%);
+    }
+  }
+  @keyframes endDown {
+    from {
+      transform: translate(0, -100%);
+    }
+    to {
+      transform: translate(0, 100%);
+    }
+  }
+}

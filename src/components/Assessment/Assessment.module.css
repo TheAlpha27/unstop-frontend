@@ -18,3 +18,23 @@
 .bottom {
   padding: 20px 20px;
 }
+
+/* Mobile CSS */
+.mobileTop {
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-100, #1c4980);
+  font-size: 16px;
+  font-weight: 600;
+}
+@media only screen and (max-width: 760px) {
+  .top {
+    flex-direction: column;
+    padding: 0;
+    gap: 0px;
+  }
+}
