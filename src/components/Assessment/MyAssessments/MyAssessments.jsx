@@ -9,6 +9,9 @@ import assessment from "../../../assets/assessment.svg";
 import threeDots from "../../../assets/three_dots.svg";
 import calendar from "../../../assets/calendar.svg";
 import share from "../../../assets/share.svg";
+import search from "../../../assets/search.svg";
+import barChart from "../../../assets/bar-chart.svg";
+import filter from "../../../assets/filter-list-alt.svg";
 import { addCommasToNumber, getInitials } from "../../../helper";
 import AddAssignmentModal from "../../AddAssignmentModal/AddAssignmentModal";
 
@@ -48,7 +51,11 @@ const assessmentDataINI = [
   },
 ];
 
-const AssessmentsOverview = ({ assessmentData }) => {
+const AssessmentsOverview = ({
+  assessmentData,
+  isMobile,
+  startEndAnimation,
+}) => {
   const overviewOptions = useMemo(
     () => [
       {
@@ -114,17 +121,30 @@ const AssessmentsOverview = ({ assessmentData }) => {
     ],
     [assessmentData?.length]
   );
+  if (isMobile) {
+    let temp = overviewOptions[overviewOptions.length - 1];
+    overviewOptions[overviewOptions.length - 1] = overviewOptions[1];
+    overviewOptions[1] = temp;
+  }
   return (
-    <div className={styles.overviewContainer}>
-      <div className={styles.title}>Assessments Overview</div>
-      <div className={styles.overviewCards}>
+    <div className={`${styles.overviewContainer}`}>
+      {!isMobile && <div className={styles.title}>Assessments Overview</div>}
+      <div
+        className={`${styles.overviewCards} ${
+          startEndAnimation ? styles.endAnimation : ""
+        }`}
+      >
         {overviewOptions.map((e, idx) => {
           return (
             <div
               className={styles.card}
               style={{
                 borderLeft: idx === 0 ? "" : "1px solid #dadce0",
-                flexGrow: `${e.options.length}`,
+                borderBottom:
+                  isMobile && idx < overviewOptions.length - 1
+                    ? "1px solid #dadce0"
+                    : "",
+                flexGrow: `${isMobile ? "1" : e.options.length}`,
               }}
             >
               <div className={styles.cardTitle} style={{ textWrap: "nowrap" }}>
@@ -261,6 +281,10 @@ const MyAssessmentsDetails = ({
   setOpenAddModal,
   assessmentData,
   setAssessmentData,
+  showOverview,
+  setshowOverview,
+  isMobile,
+  setStartEndAnimation,
 }) => {
   const handleDelete = (data) => {
     let temp = [...assessmentData];
@@ -270,7 +294,40 @@ const MyAssessmentsDetails = ({
   };
   return (
     <div className={styles.overviewContainer}>
-      <div className={styles.title}>My Assessment</div>
+      {isMobile ? (
+        <div className={styles.mobileTop}>
+          <div className={styles.title}>My Assessment</div>
+          <div className={styles.icons}>
+            {" "}
+            <div className={styles.mobIconCont}>
+              <img src={search} alt="" />
+            </div>
+            <div className={styles.mobIconCont}>
+              <img src={filter} alt="" />
+            </div>
+            <div
+              onClick={() => {
+                if (showOverview) {
+                  setStartEndAnimation(true);
+                  setTimeout(() => {
+                    setStartEndAnimation(false);
+                    setshowOverview(false);
+                  }, 450);
+                } else {
+                  setshowOverview(true);
+                }
+              }}
+              className={` ${styles.mobIconCont} ${
+                showOverview ? styles.activeMob : ""
+              }`}
+            >
+              <img src={barChart} alt="" />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <div className={styles.title}>My Assessment</div>
+      )}
       <div className={styles.assessmentCardsContainer}>
         <div
           onClick={() => setOpenAddModal(true)}
@@ -293,9 +350,11 @@ const MyAssessmentsDetails = ({
   );
 };
 
-const MyAssessments = () => {
+const MyAssessments = ({ isMobile }) => {
   const [openAddModal, setOpenAddModal] = useState(false);
   const [assessmentData, setAssessmentData] = useState();
+  const [showOverview, setshowOverview] = useState(false);
+  const [startEndAnimation, setStartEndAnimation] = useState(false);
   useEffect(() => {
     const assessmentDataLocal = localStorage.getItem("assessmentData");
     if (assessmentDataLocal.length) {
@@ -315,11 +374,27 @@ const MyAssessments = () => {
         assessmentData={assessmentData}
         setAssessmentData={setAssessmentData}
       />
-      <AssessmentsOverview assessmentData={assessmentData} />
+      {isMobile ? (
+        showOverview && (
+          <AssessmentsOverview
+            showOverview={showOverview}
+            setshowOverview={setshowOverview}
+            isMobile={isMobile}
+            assessmentData={assessmentData}
+            startEndAnimation={startEndAnimation}
+          />
+        )
+      ) : (
+        <AssessmentsOverview assessmentData={assessmentData} />
+      )}
       <MyAssessmentsDetails
         setOpenAddModal={setOpenAddModal}
         assessmentData={assessmentData}
         setAssessmentData={setAssessmentData}
+        setshowOverview={setshowOverview}
+        showOverview={showOverview}
+        isMobile={isMobile}
+        setStartEndAnimation={setStartEndAnimation}
       />
     </div>
   );

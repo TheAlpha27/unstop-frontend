@@ -134,8 +134,8 @@
   color: #1c4980;
   cursor: pointer;
 }
-.delete:hover{
-    background-color: #f3f3f3;
+.delete:hover {
+  background-color: #f3f3f3;
 }
 .threeDots {
   height: fit-content;
@@ -220,4 +220,77 @@
   font-weight: 700;
   color: white;
   position: absolute;
+}
+
+/* mobile css */
+.mobileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icons {
+  display: flex;
+  align-items: center;
+}
+.icons > img {
+  padding: 4px;
+}
+.mobIconCont {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.activeMob {
+  border: 1px solid #0073e6;
+  background: #f2f8fe;
+}
+@media only screen and (max-width: 760px) {
+  .overviewCards {
+    overflow: hidden;
+    flex-wrap: wrap;
+    padding-right: 0;
+    height: 300px;
+    animation-name: swipeDown;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+  }
+  @keyframes swipeDown {
+    from {
+      height: 0px;
+    }
+    to {
+      height: 300px;
+    }
+  }
+  .endAnimation {
+    height: 0px;
+    transition: height 0.5s;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .card {
+    gap: 10px;
+  }
+  .cardTitle {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .value {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .diff {
+    font-size: 10px;
+  }
+  .subText {
+    font-size: 10px;
+  }
+  .metricContainer {
+    gap: 10px;
+  }
 }

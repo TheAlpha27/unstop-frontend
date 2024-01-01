@@ -14,7 +14,7 @@ import SidebarMobile from "./components/Sidebar/SidebarMobile";
 
 function App() {
   const [activeState, setActiveState] = useState(2); // 1: Dashboard, 2: Assessment, 3: My Library, 4: Round Status
-  const [showSidebar, setShowSidebar] = useState(true);
+  const [showSidebar, setShowSidebar] = useState(false);
   const items = useMemo(
     () => [
       {

@@ -44,7 +44,7 @@ const Assessment = ({ isMobile, setShowSidebar }) => {
         />
       </div>
       <div className={styles.bottom}>
-        {activeSwatch === 1 && <MyAssessments />}
+        {activeSwatch === 1 && <MyAssessments isMobile={isMobile}/>}
         {activeSwatch === 2 && <UnstopAssessments />}
       </div>
     </>
