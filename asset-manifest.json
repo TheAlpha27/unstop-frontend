@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/unstop-frontend/static/css/main.16092207.css",
-    "main.js": "/unstop-frontend/static/js/main.dcaeae0b.js",
+    "main.js": "/unstop-frontend/static/js/main.500e46ae.js",
     "static/media/candidate_source.svg": "/unstop-frontend/static/media/candidate_source.6fd0f59a59b2c398c02256f3af617af4.svg",
     "static/media/candidate.svg": "/unstop-frontend/static/media/candidate.724833311407cea165f12d3b261006ff.svg",
     "static/media/quiz.svg": "/unstop-frontend/static/media/quiz.144d5727871f6be7dfec5b0438d5b039.svg",
@@ -25,10 +25,10 @@
     "static/media/cut.svg": "/unstop-frontend/static/media/cut.1fc492f6dfac5e111c235deccbbc1893.svg",
     "static/media/bar-chart.svg": "/unstop-frontend/static/media/bar-chart.32455e28ec81c48a5f8e4f84821dba51.svg",
     "main.16092207.css.map": "/unstop-frontend/static/css/main.16092207.css.map",
-    "main.dcaeae0b.js.map": "/unstop-frontend/static/js/main.dcaeae0b.js.map"
+    "main.500e46ae.js.map": "/unstop-frontend/static/js/main.500e46ae.js.map"
   },
   "entrypoints": [
     "static/css/main.16092207.css",
-    "static/js/main.dcaeae0b.js"
+    "static/js/main.500e46ae.js"
   ]
 }
