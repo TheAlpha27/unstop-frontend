@@ -293,7 +293,10 @@ const AddAssignmentModal = ({
                     Number(e.target.value) >= 0 &&
                     Number(e.target.value) < 24
                   ) {
-                    if (Number(e.target.value) >= 10) {
+                    if (
+                      Number(e.target.value) >= 10 ||
+                      e.target.value.length >= 2
+                    ) {
                       setDuration({ ...duration, hour: e.target.value });
                       document.getElementById("min").focus();
                     } else {
